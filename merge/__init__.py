@@ -12,5 +12,5 @@ def handle(args):
         command_set = sub_command_map[sub_command]
         handler = command_set[0]
         parser = command_set[1]
-        ordered_args = parser(args[1:])
+        ordered_args = parser(args[1])
         handler(*ordered_args)
