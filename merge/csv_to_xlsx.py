@@ -1,6 +1,9 @@
 from pandas.io.excel import ExcelWriter
 import pandas
 
+def parse(args):
+    return (args[0], args[1], args[2])
+
 def csv_to_xlsx(cvs_file, xlsx_file, sheet_name):
     with ExcelWriter(xlsx_file) as ew:
         pandas.read_csv(cvs_file).to_excel(ew, sheet_name=sheet_name, index=False)

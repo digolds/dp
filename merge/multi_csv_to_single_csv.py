@@ -1,6 +1,9 @@
 import os, glob
 import pandas as pd
 
+def parse(args):
+    return (args[0], args[1], args[2])
+
 def multiple_csv_to_single_csv(src_path, dest_path, output_name):
     all_files = glob.glob(os.path.join(src_path, "*.csv"))
     df_from_each_file = (pd.read_csv(f, sep=',') for f in all_files)
