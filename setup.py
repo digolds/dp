@@ -4,8 +4,8 @@ with open("README.MD", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="dp",
-    version="0.0.1",
+    name="digolds-dp",
+    version="0.0.2",
     author="SLZ",
     author_email="founders@digolds.cn",
     description="An easy-to-use data pipeline for data analysts",
