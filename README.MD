@@ -10,6 +10,12 @@ In order to use dp, firstly, you should install it by `pip install digolds-dp`, 
 dp --version
 ```
 
+The outut is shown below:
+
+```bash
+dp(data pipeline) 0.0.2
+```
+
 dp is designed with the following principles in mind:
 
 ```bash
@@ -21,3 +27,8 @@ For example, you can merge a large number of csv files into single xlsx file by 
 ```bash
 dp merge multi-csv2xlsx --src-path D:\tests --xlsx-file D:\final.xlsx --sheet-name daily
 ```
+
+The operation types are shown below:
+
+1. `merge`, you should use it for merging data
+2. `draw`, you should use it for plotting diagrams
