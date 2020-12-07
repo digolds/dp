@@ -8,6 +8,13 @@ def list_to_dict(a):
 
 def run():
     argc = len(sys.argv)
+
+    if argc == 2 and sys.argv[1] == '--version':
+        import pkg_resources
+        version = pkg_resources.require('digolds-dp')[0].version
+        print(f'dp(data pipeline) {version}')
+        return
+
     if argc < 3:
         print('Usage: dp <operation> <sub-command> <options>')
         return
