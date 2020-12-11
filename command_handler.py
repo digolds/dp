@@ -1,4 +1,7 @@
 import logging
+import importlib
+import os
+import glob
 
 class CommandHandler:
     def __init__(self, sub_command):
@@ -12,3 +15,18 @@ class CommandHandler:
             handler(args[1])
         else:
             logging.warning(f'sub command {sub_command} is not found')
+
+def create_handler(folder):
+    dirpath = os.path.dirname(folder)
+    foldername = os.path.basename(dirpath)
+    files = [f for f in glob.glob(os.path.join(dirpath, '*.py'))]
+    sub_command_map = {}
+    for f in files:
+        f = os.path.basename(f)
+        if f == '__init__.py':
+            continue
+        f_without_extension = os.path.splitext(f)[0]
+        m = importlib.import_module(f'{foldername}.{f_without_extension}')
+        sub_command_map[getattr(m, 'name')] = getattr(m, 'handler')
+    
+    return CommandHandler(sub_command_map)

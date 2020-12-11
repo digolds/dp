@@ -12,6 +12,8 @@ def csv_to_xlsx(csv_file, xlsx_file, sheet_name):
         pandas.read_csv(csv_file).to_excel(ew, sheet_name=sheet_name, index=False)
         return xlsx_file
 
+name = 'csv2xlsx'
+
 def handler(args):
     csv_to_xlsx(*parse(args))
 
