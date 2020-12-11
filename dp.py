@@ -1,5 +1,6 @@
 import importlib
 import sys
+import logging
 
 def list_to_dict(a):
     it = iter(a)
@@ -23,4 +24,4 @@ def run():
     pkg = importlib.import_module(operation)
     combined_args = [sys.argv[2], list_to_dict(sys.argv[3:])]
     pkg.handle(combined_args)
-    print("Done!")
+    logging.info('Done!')

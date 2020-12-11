@@ -18,5 +18,8 @@ def multiple_csv_to_single_xlsx(src_path, xlsx_file, sheet_name):
         os.remove(file_name)
     return output
 
+def handler(args):
+    multiple_csv_to_single_xlsx(*parse(args))
+
 if __name__ == "__main__":
     pass

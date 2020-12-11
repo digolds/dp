@@ -15,6 +15,9 @@ def multiple_csv_to_single_csv(src_path, dest_path, output_name):
     df_merged.to_csv(output_file, index=False)
     return output_file
 
+def handler(args):
+    multiple_csv_to_single_csv(*parse(args))
+
 if __name__ == "__main__":
     src_path = './tests'
     dest_path = './tests'
