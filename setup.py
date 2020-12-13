@@ -21,6 +21,8 @@ setuptools.setup(
     # https://python-packaging.readthedocs.io/en/latest/dependencies.html
     install_requires=[
         'pandas',
+        'matplotlib',
+        'numpy'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
