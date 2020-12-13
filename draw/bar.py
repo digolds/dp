@@ -11,8 +11,14 @@ def parse(args):
     show = args.get('--show', '')
     return (file_name, image_name, index, columns, values, show)
 
+def create_data_frame(file_name):
+    if file_name.endswith('.xlsx'):
+        return pd.read_excel(file_name)
+    elif file_name.endswith('.csv'):
+        return pd.read_csv(file_name)
+
 def draw_bar(file_name, image_name, index, columns, values, show):
-    df = pd.read_excel(file_name)
+    df = create_data_frame(file_name)
     pivot = pd.pivot_table(df,
                        index=index, 
                        columns=columns, 
@@ -21,6 +27,7 @@ def draw_bar(file_name, image_name, index, columns, values, show):
                        fill_value=0)
 
     pivot.plot.bar(stacked=True)
+
     if show == 'yes':
         plt.show()
     else:
