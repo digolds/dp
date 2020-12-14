@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import common
 
 def parse(args):
     file_name = args.get('--file-name', '')
@@ -17,8 +18,8 @@ def create_data_frame(file_name):
     elif file_name.endswith('.csv'):
         return pd.read_csv(file_name)
 
-def draw_bar(file_name, image_name, index, columns, values, show):
-    df = create_data_frame(file_name)
+def draw_bar_df(inputs, image_name, index, columns, values, show):
+    df = inputs.df
     pivot = pd.pivot_table(df,
                        index=index, 
                        columns=columns, 
@@ -28,10 +29,18 @@ def draw_bar(file_name, image_name, index, columns, values, show):
 
     pivot.plot.bar(stacked=True)
 
+    file_name = ''
     if show == 'yes':
         plt.show()
     else:
         plt.savefig(image_name, dpi=300, bbox_inches='tight')
+        file_name = image_name
+    return common.MiddleData(df, file_name)
+
+def draw_bar(file_name, image_name, index, columns, values, show):
+    df = create_data_frame(file_name)
+    inputs = common.MiddleData(df)
+    return draw_bar_df(inputs, image_name, index, columns, values, show)
 
 name = 'bar'
 
