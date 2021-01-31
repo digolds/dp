@@ -1,6 +1,10 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.realpath(__file__), '../../')))
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from rw import read_write
 
 def parse(args):
     file_name = args.get('--file-name', '')
@@ -10,12 +14,6 @@ def parse(args):
     values = args.get('--values', '')
     show = args.get('--show', '')
     return (file_name, image_name, index, columns, values, show)
-
-def create_data_frame(file_name):
-    if file_name.endswith('.xlsx'):
-        return pd.read_excel(file_name)
-    elif file_name.endswith('.csv'):
-        return pd.read_csv(file_name)
 
 def draw_bar_df(df, image_name, index, columns, values, show):
     pivot = pd.pivot_table(df,
@@ -34,7 +32,7 @@ def draw_bar_df(df, image_name, index, columns, values, show):
     return df
 
 def draw_bar(file_name, image_name, index, columns, values, show):
-    df = create_data_frame(file_name)
+    df = read_write.create_data_frame(file_name)
     return draw_bar_df(df, image_name, index, columns, values, show)
 
 name = 'bar'
@@ -49,7 +47,7 @@ def handler(args):
 
 if __name__ == "__main__":
     args = {
-        '--file-name':'./tests/bar-data.xlsx',
+        '--file-name':'draw/tests/bar-data.xlsx',
         '--image-name': 'plot.png',
         '--index': 'Date,Type',
         '--columns' : 'Region',
