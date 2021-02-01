@@ -1,5 +1,4 @@
 from pandas.io.excel import ExcelWriter
-import pandas
 from rw.read_write import create_data_frame
 
 def parse(args):
