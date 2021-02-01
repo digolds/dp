@@ -9,8 +9,9 @@ def parse(args):
 
 def csv_to_xlsx(csv_file, xlsx_file, sheet_name):
     with ExcelWriter(xlsx_file) as ew:
-        create_data_frame(csv_file).to_excel(ew, sheet_name=sheet_name, index=False)
-        return xlsx_file
+        df = create_data_frame(csv_file)
+        df.to_excel(ew, sheet_name=sheet_name, index=False)
+        return df
 
 name = 'csv2xlsx'
 
