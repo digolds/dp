@@ -1,10 +1,7 @@
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.realpath(__file__), '../../')))
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-from rw import read_write
+from rw.read_write import create_data_frame
 
 def parse(args):
     file_name = args.get('--file-name', '')
@@ -32,7 +29,7 @@ def draw_bar_df(df, image_name, index, columns, values, show):
     return df
 
 def draw_bar(file_name, image_name, index, columns, values, show):
-    df = read_write.create_data_frame(file_name)
+    df = create_data_frame(file_name)
     return draw_bar_df(df, image_name, index, columns, values, show)
 
 name = 'bar'
