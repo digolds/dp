@@ -1,4 +1,5 @@
-from rw.read_write import create_data_frame, dataframe_to_file
+from rw.read import create_data_frame
+from rw.write import dataframe_to_file
 
 def parse(args):
     csv_file = args.get('--csv-file', 'data.csv')
