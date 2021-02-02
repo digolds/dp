@@ -1,7 +1,7 @@
 import os, glob
 import pandas as pd
 
-def parse(args):
+def _parse(args):
     src_path = args.get('--src-path', '.')
     dest_path = args.get('--dest-path', '.')
     output_name = args.get('--output-name', 'your-csv-file-name.csv')
@@ -18,7 +18,7 @@ def multiple_csv_to_single_csv(src_path, dest_path, output_name):
 name = 'csv2csv'
 
 def handler(args):
-    multiple_csv_to_single_csv(*parse(args))
+    multiple_csv_to_single_csv(*_parse(args))
 
 if __name__ == "__main__":
     src_path = './tests'

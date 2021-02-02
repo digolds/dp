@@ -2,7 +2,7 @@ from merge import csv_to_xlsx
 from merge import multi_csv_to_single_csv
 import os
 
-def parse(args):
+def _parse(args):
     src_path = args.get('--src-path', '.')
     xlsx_file = args.get('--xlsx-file', 'data.xlsx')
     sheet_name = args.get('--sheet-name', 'daily')
@@ -21,7 +21,7 @@ def multiple_csv_to_single_xlsx(src_path, xlsx_file, sheet_name):
 name = 'multi-csv2xlsx'
 
 def handler(args):
-    multiple_csv_to_single_xlsx(*parse(args))
+    multiple_csv_to_single_xlsx(*_parse(args))
 
 if __name__ == "__main__":
     pass

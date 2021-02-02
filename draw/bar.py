@@ -1,9 +1,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-from rw.read_write import create_data_frame
+from rw import read
 
-def parse(args):
+def _parse(args):
     file_name = args.get('--file-name', '')
     image_name = args.get('--image-name', 'tmp.png')
     index = map(str.strip, args.get('--index', '').split(','))
@@ -29,13 +29,15 @@ def draw_bar_df(df, image_name, index, columns, values, show):
     return df
 
 def draw_bar(file_name, image_name, index, columns, values, show):
-    df = create_data_frame(file_name)
+    df = read.operator(None, {
+        '--file-name' : file_name
+    })
     return draw_bar_df(df, image_name, index, columns, values, show)
 
 name = 'bar'
 
 def handler(args):
-    draw_bar(*parse(args))
+    draw_bar(*_parse(args))
     # ts = pd.Series(np.random.randn(1000),index=pd.date_range('1/1/2000', periods=1000))
     # ts = ts.cumsum()
     # ts.plot()

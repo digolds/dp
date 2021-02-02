@@ -1,26 +1,27 @@
-from rw.read import create_data_frame
-from rw.write import dataframe_to_file
+from rw import read
+from rw import write
 
-def parse(args):
+def _parse(args):
     csv_file = args.get('--csv-file', 'data.csv')
     xlsx_file = args.get('--xlsx-file', 'data.xlsx')
     sheet_name = args.get('--sheet-name', 'daily')
     return (csv_file, xlsx_file, sheet_name)
 
-def df_to_xlsx(df, xlsx_file, sheet_name):
-    return dataframe_to_file(df, {
-        'file_name' : xlsx_file,
-        'sheet_name' : sheet_name
+def csv_to_xlsx(csv_file, xlsx_file, sheet_name):
+    df = read.operator(None, csv_file)
+    return write.operator(df, {
+        '--file-name' : xlsx_file,
+        '--sheet-name' : sheet_name
     })
 
-def csv_to_xlsx(csv_file, xlsx_file, sheet_name):
-    df = create_data_frame(csv_file)
-    return df_to_xlsx(df, xlsx_file, sheet_name)
-
 name = 'csv2xlsx'
+operator_name = name
 
 def handler(args):
-    csv_to_xlsx(*parse(args))
+    csv_to_xlsx(*_parse(args))
+
+def operator(df, args):
+    return csv_to_xlsx(*_parse(args))
 
 if __name__ == "__main__":
     csv_file = 'merge/tests/01.csv'

@@ -1,15 +1,17 @@
 from pandas.io.excel import ExcelWriter
 
-def dataframe_to_file(df, args):
-    file_name = args.get('file_name', '')
-    if file_name.endswith('.xlsx'):
-        with ExcelWriter(file_name) as ew:
-            df.to_excel(ew, sheet_name=args.get('sheet_name'), index=False)
-            return df
-    else:
-        print(f'invalid file: {file_name}')
+def _parse(args):
+    file_name = args.get('--file-name', '')
+    sheet_name = args.get('--sheet-name', '')
+    return (file_name, sheet_name)
 
-operator_name = 'write_file'
+def _dataframe_to_file(df, file_name, sheet_name):
+    with ExcelWriter(file_name) as ew:
+        df.to_excel(ew, sheet_name=sheet_name, index=False)
+        return df
+
+name = 'write2xlsx'
+operator_name = name
 
 def operator(df, args):
-    return dataframe_to_file(df, args)
+    return _dataframe_to_file(df, *_parse(args))
