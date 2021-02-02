@@ -35,7 +35,7 @@ def create_operator(name, df, args):
     return Operator(df, args, ops[name])
 
 if __name__ == '__main__':
-    read_operator = create_operator('read_from_csv', None, {
+    read_operator = create_operator('read-from-csv', None, {
         '--file-name' : r'D:\dr\dp\merge\tests\01.csv'
     })
     df = read_operator()
