@@ -31,3 +31,7 @@ def update_image(ppt_file, slide_no, image_name, new_image_file):
     prs.save(ppt_file)
 
 update_image('ppt/tests/sample.pptx', 0, 'Icon_Bird_512x512.png', 'ppt/tests/index.jpg')
+
+# https://stackoverflow.com/questions/46463861/get-image-file-names-with-python-pptx
+# https://towardsdatascience.com/creating-presentations-with-python-3f5737824f61
+# https://python-pptx.readthedocs.io/en/latest/api/presentation.html#presentation-function
