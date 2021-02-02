@@ -11,7 +11,6 @@ def _dataframe_to_file(df, file_name, sheet_name):
         return df
 
 name = 'write2xlsx'
-operator_name = name
 
 def operator(df, args):
     return _dataframe_to_file(df, *_parse(args))

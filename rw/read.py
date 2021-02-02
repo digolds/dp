@@ -7,8 +7,7 @@ def _parse(args):
 def _create_data_frame(file_name):
     return pd.read_csv(file_name)
 
-name = 'read_from_csv'
-operator_name = name
+name = 'read-from-csv'
 
 def operator(df, args):
     return _create_data_frame(*_parse(args))

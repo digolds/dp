@@ -13,7 +13,7 @@ def _get_operators(sub_folder):
             continue
         f_without_extension = os.path.splitext(f)[0]
         m = importlib.import_module(f'{foldername}.{f_without_extension}')
-        operator_map[getattr(m, 'operator_name')] = getattr(m, 'operator')
+        operator_map[getattr(m, 'name')] = getattr(m, 'operator')
     return operator_map
 
 def _get_all_operators():

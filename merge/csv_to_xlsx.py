@@ -7,27 +7,32 @@ def _parse(args):
     sheet_name = args.get('--sheet-name', 'daily')
     return (csv_file, xlsx_file, sheet_name)
 
-def csv_to_xlsx(csv_file, xlsx_file, sheet_name):
-    df = read.operator(None, csv_file)
+def _csv_to_xlsx(csv_file, xlsx_file, sheet_name):
+    df = read.operator(None, {
+        '--file-name' : csv_file
+    })
     return write.operator(df, {
         '--file-name' : xlsx_file,
         '--sheet-name' : sheet_name
     })
 
 name = 'csv2xlsx'
-operator_name = name
 
 def handler(args):
-    csv_to_xlsx(*_parse(args))
+    _csv_to_xlsx(*_parse(args))
 
 def operator(df, args):
-    return csv_to_xlsx(*_parse(args))
+    return _csv_to_xlsx(*_parse(args))
 
 if __name__ == "__main__":
     csv_file = 'merge/tests/01.csv'
     xlsx_file = 'merge/tests/final_result.xlsx'
     sheet_name = 'daily'
-    csv_to_xlsx(csv_file, xlsx_file, sheet_name)
+    operator(None, {
+        '--csv-file' : csv_file,
+        '--xlsx-file' : xlsx_file,
+        '--sheet-name' : sheet_name
+    })
 
 # https://stackoverflow.com/questions/39099008/how-to-write-csv-files-into-xlsx-using-python-pandas
 # https://www.codegrepper.com/code-examples/r/pandas+to+excel+no+index
