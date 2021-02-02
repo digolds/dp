@@ -1,22 +1,22 @@
-from rw import read
-from rw import write
+from rw import read_csv
+from rw import write_xlsx
 
 def _parse(args):
     csv_file = args.get('--csv-file', 'data.csv')
     xlsx_file = args.get('--xlsx-file', 'data.xlsx')
     sheet_name = args.get('--sheet-name', 'daily')
-    return (csv_file, xlsx_file, sheet_name)
+    return [csv_file, xlsx_file, sheet_name]
 
 def _csv_to_xlsx(csv_file, xlsx_file, sheet_name):
-    df = read.operator(None, {
+    df = read_csv.operator(None, {
         '--file-name' : csv_file
     })
-    return write.operator(df, {
+    return write_xlsx.operator(df, {
         '--file-name' : xlsx_file,
         '--sheet-name' : sheet_name
     })
 
-name = 'csv2xlsx'
+name = 'csv-to-xlsx'
 
 def handler(args):
     _csv_to_xlsx(*_parse(args))

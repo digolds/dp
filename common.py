@@ -16,8 +16,15 @@ def _get_operators(sub_folder):
         operator_map[getattr(m, 'name')] = getattr(m, 'operator')
     return operator_map
 
+_ops = {}
+
 def _get_all_operators():
-    return _get_operators('rw')
+    global _ops
+    if len(_ops) == 0:
+        rw_ops = _get_operators('rw')
+        merge_ops = _get_operators('merge')
+        _ops = {**rw_ops, **merge_ops}
+    return _ops
 
 class Operator:
     def __init__(self, in_df, in_args, callable_core):
@@ -40,7 +47,7 @@ if __name__ == '__main__':
     })
     df = read_operator()
 
-    write_operator = create_operator('write2xlsx', df, {
+    write_operator = create_operator('write-to-xlsx', df, {
         '--file-name' : 'abc.xlsx',
         '--sheet-name' : 'abc'
     })
