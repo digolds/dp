@@ -1,5 +1,7 @@
 # An easy-to-use data manipulation framework for data analysts
 
+## Quick guide
+
 dp(data pipeline) is mainly focus on handling automation of a data analyst's daily routines, such as merging thousand of cvs files into single xlsx file in just  several minutes, ploting diagrams when new data is arrived. As a data analyst, you can use dp to build your data pipeline, which will bring your data, and turn that into insightful reports automatically.
 
 More features will add to dp, I'm happy to know what real problems you(as a data analyst) are struggling for and what ablities you are expecting to extend, so that you can process data in an easy way!
@@ -32,3 +34,17 @@ The operation types are shown below:
 
 1. `merge`, you should use it for merging data
 2. `draw`, you should use it for plotting diagrams
+
+## Unit Test
+
+* Run all unit tests by typing the following command in Terminal.
+
+```bash
+python -m unittest discover -v -s tests
+```
+
+* Run specific test by typing the following command in Terminal.
+
+```bash
+python -m unittest -v <module-name>
+```
