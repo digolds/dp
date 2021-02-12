@@ -22,7 +22,8 @@ setuptools.setup(
     install_requires=[
         'pandas',
         'matplotlib',
-        'numpy'
+        'numpy',
+        'pywin32'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
