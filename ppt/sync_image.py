@@ -9,16 +9,6 @@ def _parse(args):
     new_image_file = args.get('--new-image-file')
     return [ppt_file, slide_no, image_name, new_image_file]
 
-def _create_ppt():
-    path='ppt/tests/Icon_Bird_512x512.png'
-    prs = Presentation()
-    blank_slide_layout = prs.slide_layouts[6]
-    slide = prs.slides.add_slide(blank_slide_layout)
-    left=Inches(1)
-    top=Inches(0.5)
-    slide.shapes.add_picture(path,left,top)
-    prs.save('ppt/tests/sample.pptx')
-
 def _update_image(ppt_file, slide_no, image_name, new_image_file):
     prs = Presentation(ppt_file)
     for s in prs.slides[slide_no].shapes:
@@ -41,13 +31,15 @@ def operator(df, args):
     return _update_image(*_parse(args))
 
 if __name__ == "__main__":
+    import pathlib
+
     args = {
-        '--ppt-file':r'ppt/tests/sample.pptx',
+        '--ppt-file':str(pathlib.Path.cwd() /'ppt/tests/sample.pptx'),
         '--slide-no': 0,
         '--image-name' : 'Icon_Bird_512x512.png',
-        '--new-image-file' : 'ppt/tests/index.jpg'
+        '--new-image-file' : str(pathlib.Path.cwd() / 'ppt/tests/index.jpg')
     }
-    _create_ppt()
+
     operator(None, args)
 
 # https://stackoverflow.com/questions/46463861/get-image-file-names-with-python-pptx
