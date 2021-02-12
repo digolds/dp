@@ -22,8 +22,9 @@ def operator(df, args):
     return _PPTtoPDF(*_parse(args))
 
 if __name__ == "__main__":
+    import pathlib
     args = {
-        '--input-file-name':r'D:\dr\src\dp\convert\tests\result.pptx',
-        '--output-file-name': r'D:\dr\src\dp\convert\tests\result.pdf',
+        '--input-file-name': str(pathlib.Path.cwd() / 'convert/tests/result.pptx'),
+        '--output-file-name': str(pathlib.Path.cwd() / 'convert/tests/result.pdf'),
     }
     operator(None, args)
