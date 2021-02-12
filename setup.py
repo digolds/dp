@@ -23,7 +23,8 @@ setuptools.setup(
         'pandas',
         'matplotlib',
         'numpy',
-        'pywin32'
+        'pywin32',
+        'python-pptx'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
