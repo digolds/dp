@@ -2,6 +2,8 @@ import importlib
 import sys
 import logging
 
+from common import create_operator
+
 def list_to_dict(a):
     it = iter(a)
     res_dct = dict(zip(it, it))

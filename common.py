@@ -23,7 +23,8 @@ def _get_all_operators():
     if len(_ops) == 0:
         rw_ops = _get_operators('rw')
         merge_ops = _get_operators('merge')
-        _ops = {**rw_ops, **merge_ops}
+        manipulate_ops = _get_operators('manipulate')
+        _ops = {**rw_ops, **merge_ops, **manipulate_ops}
     return _ops
 
 class Operator:

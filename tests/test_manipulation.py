@@ -6,6 +6,7 @@ from manipulate import drive_new_column
 from manipulate import drop_empty_row
 from manipulate import drop_duplicate_row
 from manipulate import merge_data_frame
+from manipulate import format_date
 
 class TestManipulation(unittest.TestCase):
     # run before each test
@@ -80,6 +81,16 @@ class TestManipulation(unittest.TestCase):
         df_result = merge_data_frame.operator(df, args)
         self.assertTrue(df_result['Gender'].isnull().values[1])
         self.assertTrue(df_result['Grade'].isnull().values[1])
+    
+    def test_format_date(self):
+        data = [['20170212', 10], ['20180712', 15], ['20170509', 15]] 
+        df = pd.DataFrame(data, columns = ['Date', 'Age']) 
+        args = {
+            '--columns':['Date']
+        }
+        df_result = format_date.operator(df, args)
+        import numpy as np
+        self.assertTrue(type(df_result['Date'].values[0]) == np.datetime64)
 
 if __name__ == '__main__':
     unittest.main()

@@ -24,7 +24,8 @@ setuptools.setup(
         'matplotlib',
         'numpy',
         'pywin32',
-        'python-pptx'
+        'python-pptx',
+        'openpyxl'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
