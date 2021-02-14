@@ -36,7 +36,7 @@ def _update_image(ppt_file, slide_no, image_name, new_image_file):
             break
     prs.save(ppt_file)
 
-name = 'update-pptx'
+name = 'update-image'
 
 def operator(df, args):
     return _update_image(*_parse(args))
