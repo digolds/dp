@@ -19,8 +19,7 @@ def draw_bar_df(df, image_name, index, columns, values, show):
                        aggfunc='sum',
                        fill_value=0)
 
-    pivot.plot.bar(stacked=True)
-
+    pivot.plot.bar(rot=45)
     if show == 'yes':
         plt.show()
     else:

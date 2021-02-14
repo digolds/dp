@@ -5,7 +5,7 @@ def _parse(args):
     return [condition]
 
 def _filter_out(df, condition):
-    return df[condition()]
+    return df[condition()].reset_index(drop=True)
 
 name = 'filter'
 

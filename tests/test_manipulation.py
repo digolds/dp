@@ -7,6 +7,7 @@ from manipulate import drop_empty_row
 from manipulate import drop_duplicate_row
 from manipulate import merge_data_frame
 from manipulate import format_date
+from manipulate import drop_column
 
 class TestManipulation(unittest.TestCase):
     # run before each test
@@ -29,7 +30,16 @@ class TestManipulation(unittest.TestCase):
         df_result = filter.operator(self.df, args)
         self.assertEqual(len(df_result.index), 2, 'The number of Records should be 2')
         self.assertEqual(df_result['Age'].values[0], 15, 'The first record\'s age should be 15')
+        self.assertFalse(df_result.equals(self.df), 'filter should do nothing on input data frame')
     
+    def test_drop_column(self):
+        args = {
+            '--columns':['Age'],
+            '--remain' : True
+        }
+        df_result = drop_column.operator(self.df, args)
+        self.assertTrue(df_result.columns[0] == self.df.columns[1], 'Column name should be Age')
+
     def test_rename(self):
         print('rename')
         args = {

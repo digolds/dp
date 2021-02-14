@@ -16,5 +16,7 @@ def operator(df, args):
 if __name__ == "__main__": 
     data = [['tom', 10], ['nick', 15], ['nick', 15]] 
     df = pd.DataFrame(data, columns = ['Name', 'Age']) 
-    args = {}
+    args = {
+        '--subset' : ['Name']
+    }
     operator(df, args)

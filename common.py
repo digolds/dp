@@ -24,7 +24,10 @@ def _get_all_operators():
         rw_ops = _get_operators('rw')
         merge_ops = _get_operators('merge')
         manipulate_ops = _get_operators('manipulate')
-        _ops = {**rw_ops, **merge_ops, **manipulate_ops}
+        draw_ops = _get_operators('draw')
+        ppt_ops = _get_operators('ppt')
+        convert_ops = _get_operators('convert')
+        _ops = {**rw_ops, **merge_ops, **manipulate_ops, **draw_ops, **ppt_ops, **convert_ops}
     return _ops
 
 class Operator:
