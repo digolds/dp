@@ -9,17 +9,20 @@ def _parse(args):
     columns = args.get('--columns', '')
     values = args.get('--values', '')
     show = args.get('--show', '')
-    return [image_name, index, columns, values, show]
+    horizontal = args.get('--horizontal', True)
+    return [image_name, index, columns, values, show, horizontal]
 
-def draw_bar_df(df, image_name, index, columns, values, show):
+def draw_bar_df(df, image_name, index, columns, values, show, horizontal):
     pivot = pd.pivot_table(df,
                        index=index, 
                        columns=columns, 
                        values=values, 
                        aggfunc='sum',
                        fill_value=0)
-
-    pivot.plot.bar(rot=45)
+    if horizontal:
+        pivot.plot.barh()
+    else:
+        pivot.plot.bar()
     if show == 'yes':
         plt.show()
     else:
@@ -53,7 +56,8 @@ if __name__ == "__main__":
         '--index': 'Date,Type',
         '--columns' : 'Region',
         '--values' : 'Amount',
-        '--show' : 'yes'
+        '--show' : 'yes',
+        '--horizontal' : True
     }
     handler(args)
 
