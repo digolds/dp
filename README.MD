@@ -12,7 +12,7 @@ In order to use dp, firstly, you should install it by `pip install digolds-dp`, 
 dp --version
 ```
 
-The outut is shown below:
+The output is shown below:
 
 ```bash
 dp(data pipeline) 0.0.2
@@ -34,6 +34,12 @@ The operation types are shown below:
 
 1. `merge`, you should use it for merging data
 2. `draw`, you should use it for plotting diagrams
+
+You can also enter the following command to learn more from some articles:
+
+```bash
+dp --help
+```
 
 ## Unit Test
 
