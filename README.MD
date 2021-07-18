@@ -46,7 +46,7 @@ dp --help
 * Run all unit tests by typing the following command in Terminal.
 
 ```bash
-python -m unittest discover -v -s tests
+python3 -m unittest -v tests/test_*
 ```
 
 * Run specific test by typing the following command in Terminal.
