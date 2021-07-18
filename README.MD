@@ -53,4 +53,29 @@ python -m unittest discover -v -s tests
 
 ```bash
 python -m unittest -v <module-name>
+
+For example
+python3 -m unittest -v tests/test_common.py
+```
+
+## Delpoy locally
+
+Visit [here](https://packaging.python.org/tutorials/packaging-projects/) to learn how to package a lib step by step.
+
+* Run the following command to build .whl file:
+
+```bash
+python3 -m build
+```
+
+* Run the following command to uninstall the previous version
+
+```bash
+pip3 uninstall digolds-dp
+```
+
+* Run the following command to install new version
+
+```bash
+pip3 install dist/digolds_dp-0.0.2-py3-none-any.whl
 ```

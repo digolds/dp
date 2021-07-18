@@ -1,13 +1,13 @@
 import unittest
 import pandas as pd
-from manipulate import filter
-from manipulate import rename
-from manipulate import drive_new_column
-from manipulate import drop_empty_row
-from manipulate import drop_duplicate_row
-from manipulate import merge_data_frame
-from manipulate import format_date
-from manipulate import drop_column
+from digolds.manipulate import filter
+from digolds.manipulate import rename
+from digolds.manipulate import drive_new_column
+from digolds.manipulate import drop_empty_row
+from digolds.manipulate import drop_duplicate_row
+from digolds.manipulate import merge_data_frame
+from digolds.manipulate import format_date
+from digolds.manipulate import drop_column
 
 class TestManipulation(unittest.TestCase):
     # run before each test

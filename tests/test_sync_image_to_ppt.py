@@ -1,15 +1,15 @@
 import unittest
-from ppt.sync_image import operator
+from digolds.ppt.sync_image import operator
 
 class TestSyncImageToPPT(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         import pathlib
-        cls.test_root = pathlib.Path.cwd()
+        cls.test_root = pathlib.Path.cwd() / 'data'
 
     def test_ppt_to_pdf(self):
-        pptfile = self.test_root / 'ppt/tests/sample.pptx'
-        new_image_file = self.test_root / 'ppt/tests/index.jpg'
+        pptfile = self.test_root / 'ppt/sample.pptx'
+        new_image_file = self.test_root / 'ppt/index.jpg'
         args = {
             '--ppt-file' : str(pptfile),
             '--slide-no': 0,

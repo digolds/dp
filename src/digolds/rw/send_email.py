@@ -1,4 +1,8 @@
-import win32com.client as win32
+try:
+    import win32com.client as win32
+except ModuleNotFoundError:
+    # Error handling
+    pass
 
 def _parse(args):
     recipients = args.get('--recipients', '')

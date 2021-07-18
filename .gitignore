@@ -3,3 +3,4 @@ digolds_dp.egg-info
 build
 dist
 .DS_Store
+*.pyc

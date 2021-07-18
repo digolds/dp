@@ -1,16 +1,16 @@
 import unittest
-from convert.ppt_to_pdf import operator
+from digolds.convert.ppt_to_pdf import operator
 
 class TestPPTToPDF(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         import pathlib
-        cls.test_root = pathlib.Path.cwd()
+        cls.test_root = pathlib.Path.cwd() / 'data'
 
     def test_ppt_to_pdf(self):
-        output = self.test_root / 'convert/tests/result.pdf'
+        output = self.test_root / 'convert/result.pdf'
         args = {
-        '--input-file-name': str(self.test_root / 'convert/tests/result.pptx'),
+        '--input-file-name': str(self.test_root / 'convert/result.pptx'),
         '--output-file-name': str(output),
         }
         operator(None, args)

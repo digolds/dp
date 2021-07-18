@@ -1,4 +1,8 @@
-import win32com.client
+try:
+    import win32com.client
+except ModuleNotFoundError:
+    # Error handling
+    pass
 
 def _parse(args):
     input_file_name = args.get('--input-file-name', '')
