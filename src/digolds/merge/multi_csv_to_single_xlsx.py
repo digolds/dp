@@ -1,5 +1,5 @@
-from rw import write_xlsx
-from merge import multi_csv_to_single_csv
+from digolds.rw import write_xlsx
+from digolds.merge import multi_csv_to_single_csv
 import os
 
 def _parse(args):

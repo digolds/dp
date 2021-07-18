@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-from rw import read_csv
+from digolds.rw import read_csv
 
 def _parse(args):
     image_name = args.get('--image-name', 'tmp.png')

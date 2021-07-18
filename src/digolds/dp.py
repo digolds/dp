@@ -2,7 +2,7 @@ import importlib
 import sys
 import logging
 
-from common import create_operator
+from digolds.common import create_operator
 
 def list_to_dict(a):
     it = iter(a)

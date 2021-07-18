@@ -1,5 +1,5 @@
-from rw import read_csv
-from rw import write_xlsx
+from digolds.rw import read_csv
+from digolds.rw import write_xlsx
 
 def _parse(args):
     csv_file = args.get('--csv-file', 'data.csv')
