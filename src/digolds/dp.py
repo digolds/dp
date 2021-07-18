@@ -1,8 +1,9 @@
 import importlib
 import sys
+import os
 import logging
 
-from digolds.common import create_operator
+from digolds.command_handler import create_handler
 
 def list_to_dict(a):
     it = iter(a)
@@ -37,9 +38,10 @@ def run():
         return
     
     operation = sys.argv[1]
-    pkg = importlib.import_module(operation)
+    folder = os.path.dirname(__file__)
+    handle = create_handler(os.path.join(folder, operation))
     combined_args = [sys.argv[2], list_to_dict(sys.argv[3:])]
-    pkg.handle(combined_args)
+    handle(combined_args)
     logging.info('Done!')
 
 if __name__ == "__main__":
